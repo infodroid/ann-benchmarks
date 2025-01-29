@@ -1,0 +1,13 @@
+float:
+  angular:
+  - base_args: ['@metric', '@dimension']
+    constructor: SolrKNN
+    disabled: false
+    docker_tag: ann-benchmarks-solrknn
+    module: ann_benchmarks.algorithms.solrknn
+    name: solrknn
+    run_groups:
+      m-16-ef-100:
+        arg_groups: [{m: 16, ef_construction: 100}]
+        args: {}
+        query_args: [[10, 20, 40, 80, 160]]
