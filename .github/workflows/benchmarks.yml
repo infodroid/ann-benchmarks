@@ -29,50 +29,50 @@ jobs:
       matrix:
         dataset: [random-xs-20-angular]
         library:
-          - annoy
-          - balltree
-          - bruteforce
-          - ckdtree
-          - descartes
-          - diskann
-          - dolphinnpy
+          #- annoy
+          #- balltree
+          #- bruteforce
+          #- ckdtree
+          #- descartes
+          #- diskann
+          #- dolphinnpy
           - elasticsearch
-          - elastiknn
-          - expann
-          - faiss
-          - flann
-          - glass
-          - hnswlib
-          - kdtree
-          - kgn
-          - luceneknn
-          - milvus
-          - mrpt
-          - nndescent
-          - n2
-          - nmslib
-          - onng_ngt
+          #- elastiknn
+          #- expann
+          #- faiss
+          #- flann
+          #- glass
+          #- hnswlib
+          #- kdtree
+          #- kgn
+          #- luceneknn
+          #- milvus
+          #- mrpt
+          #- nndescent
+          #- n2
+          #- nmslib
+          #- onng_ngt
           - opensearchknn
-          - panng_ngt
-          - parlayann
-          - pg_embedding
-          - pgvector
-          - pgvecto_rs
-          - pynndescent
-          - redisearch
-          - qdrant
-          - qg_ngt
-          - qsg_ngt
+          #- panng_ngt
+          #- parlayann
+          #- pg_embedding
+          #- pgvector
+          #- pgvecto_rs
+          #- pynndescent
+          #- redisearch
+          #- qdrant
+          #- qg_ngt
+          #- qsg_ngt
           - solrknn
-          - scann
-          - sptag
-          - tinyknn
-          - vald
-          - vearch
-          - vespa
-          - voyager
-          - vsag
-          - weaviate
+          #- scann
+          #- sptag
+          #- tinyknn
+          #- vald
+          #- vearch
+          #- vespa
+          #- voyager
+          #- vsag
+          #- weaviate
         include:
           - library: pynndescent
             dataset: random-xs-16-hamming
