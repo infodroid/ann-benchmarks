@@ -63,6 +63,7 @@ jobs:
           - qdrant
           - qg_ngt
           - qsg_ngt
+          - solrknn
           - scann
           - sptag
           - tinyknn
