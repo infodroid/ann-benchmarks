@@ -103,11 +103,11 @@ class SolrKNN(BaseANN):
             "add-field-type": {
                  "name": "knn_vector",
                  "class": "solr.DenseVectorField",
-                 "vectorDimension": 100,
+                 "vectorDimension": 20,
                  "similarityFunction": "cosine",
                  "knnAlgorithm": "hnsw",
-                 "hnswMaxConnections": 10,
-                 "hnswBeamWidth": 40
+                 "hnswMaxConnections": 16,
+                 "hnswBeamWidth": 100
             },
             "add-field": {
                 "name": "id", "type": "string", "stored": "true", "indexed": "true"
