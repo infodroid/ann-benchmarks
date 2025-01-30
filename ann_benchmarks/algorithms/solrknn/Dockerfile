@@ -67,7 +67,7 @@ ENV SOLR_USER="solr" \
 
 RUN set -ex; \
   groupadd -r --gid "$SOLR_GID" "$SOLR_GROUP"; \
-  useradd -r --uid "$SOLR_UID" --gid "$SOLR_GID" "$SOLR_USER"
+  useradd -r --uid "$SOLR_UID" --gid "$SOLR_GID" "$SOLR_USER" --home /opt/solr -p '*'
 
 # add symlink to /opt/solr, remove what we don't want.
 # Remove the Dockerfile because it might not represent the dockerfile that was used to generate the image.
@@ -94,15 +94,11 @@ RUN set -ex; \
 
 RUN ln -s /opt/solr /home/app/solr
 
-VOLUME /var/solr
 EXPOSE 8983
-USER $SOLR_UID
 
-RUN echo 'solr-foreground &' >> docker-entrypoint.sh
+RUN echo 'set -eux' >> docker-entrypoint.sh
+RUN echo 'pwd' >> docker-entrypoint.sh
+RUN echo 'su - solr -c "nohup /opt/solr/bin/solr start > output.log  2>&1 &"' >> docker-entrypoint.sh
 RUN echo 'python3 -u /home/app/run_algorithm.py "$@"' >> docker-entrypoint.sh
 
 ENTRYPOINT ["/bin/bash", "docker-entrypoint.sh"]
-
-
-
-

@@ -27,7 +27,7 @@ class SolrKNN(BaseANN):
         self.similarity_metric = self._vector_similarity_metric(metric)
         
         # Connect to Solr instance (replace with your Solr URL)
-        self.client = pysolr.Solr(f"{solr_url}/{self.index_name}", timeout=10)
+        self.client = pysolr.Solr(f"{solr_url}/{self.index_name}", timeout=30)
         
         self.batch_res = []
         
@@ -103,11 +103,11 @@ class SolrKNN(BaseANN):
             "add-field-type": {
                  "name": "knn_vector",
                  "class": "solr.DenseVectorField",
-                 "vectorDimension": 20,
+                 "vectorDimension": self.dimension,
                  "similarityFunction": "cosine",
-                 "knnAlgorithm": "hnsw",
-                 "hnswMaxConnections": 16,
-                 "hnswBeamWidth": 100
+                 "knnAlgorithm": self.index_options.get("type", "hnsw"),
+                 "hnswMaxConnections": self.index_options["m"],
+                 "hnswBeamWidth":  self.index_options["ef_construction"]
             },
             "add-field": {
                 "name": "id", "type": "string", "stored": "true", "indexed": "true"

@@ -53,7 +53,9 @@ def store_results(dataset_name: str, count: int, definition: Definition, query_a
     """
     filename = build_result_filepath(dataset_name, count, definition, query_arguments, batch)
     directory, _ = os.path.split(filename)
-
+    
+    print(f"Storing results in  {directory}  {filename}")
+    
     if not os.path.isdir(directory):
         os.makedirs(directory)
 
@@ -68,7 +70,8 @@ def store_results(dataset_name: str, count: int, definition: Definition, query_a
             times[i] = time
             neighbors[i] = [n for n, d in ds] + [-1] * (count - len(ds))
             distances[i] = [d for n, d in ds] + [float("inf")] * (count - len(ds))
-
+    
+    print(os.listdir(directory)) 
 
 def load_all_results(dataset: Optional[str] = None, 
                  count: Optional[int] = None, 
