@@ -70,7 +70,7 @@ def store_results(dataset_name: str, count: int, definition: Definition, query_a
             times[i] = time
             neighbors[i] = [n for n, d in ds] + [-1] * (count - len(ds))
             distances[i] = [d for n, d in ds] + [float("inf")] * (count - len(ds))
-    
+
     print(os.listdir(directory)) 
 
 def load_all_results(dataset: Optional[str] = None, 

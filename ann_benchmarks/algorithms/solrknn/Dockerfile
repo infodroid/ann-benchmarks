@@ -94,11 +94,13 @@ RUN set -ex; \
 
 RUN ln -s /opt/solr /home/app/solr
 
+WORKDIR /home/app
+
 EXPOSE 8983
 
-RUN echo 'set -eux' >> docker-entrypoint.sh
-RUN echo 'pwd' >> docker-entrypoint.sh
-RUN echo 'su - solr -c "nohup /opt/solr/bin/solr start > output.log  2>&1 &"' >> docker-entrypoint.sh
-RUN echo 'python3 -u /home/app/run_algorithm.py "$@"' >> docker-entrypoint.sh
+RUN echo 'set -eux' >> entrypoint.sh
+RUN echo 'pwd' >> entrypoint.sh
+RUN echo 'su - solr -c "nohup /opt/solr/bin/solr start > output.log  2>&1 &"' >> entrypoint.sh
+RUN echo 'python3 -u /home/app/run_algorithm.py "$@"' >> entrypoint.sh
 
-ENTRYPOINT ["/bin/bash", "docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/home/app/entrypoint.sh"]
